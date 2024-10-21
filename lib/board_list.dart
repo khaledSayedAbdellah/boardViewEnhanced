@@ -8,7 +8,7 @@ typedef OnStartDragList = void Function(int? listIndex);
 
 class BoardList extends StatefulWidget {
   final BoxDecoration? boxDecoration;
-  final EdgeInsets? margin;
+  final EdgeInsetsGeometry? margin;
   final List<Widget>? header;
   final Widget? footer;
   final List<BoardItem>? items;
