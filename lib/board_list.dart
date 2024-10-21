@@ -182,9 +182,14 @@ class BoardListState extends State<BoardList> with AutomaticKeepAliveClientMixin
     }
 
     Color? backgroundColor = Theme.of(context).colorScheme.onInverseSurface;
+    BoxDecoration? boardBoxDecoration;
 
     if (widget.backgroundColor != null) {
       backgroundColor = widget.backgroundColor;
+    }
+
+    if(widget.boardBoxDecoration != null) {
+      boardBoxDecoration = widget.boardBoxDecoration;
     }
     if (widget.boardView!.listStates.length > widget.index!) {
       widget.boardView!.listStates.removeAt(widget.index!);
@@ -193,7 +198,7 @@ class BoardListState extends State<BoardList> with AutomaticKeepAliveClientMixin
 
     return Container(
         margin: widget.margin,
-        decoration: widget.boardBoxDecoration,
+        decoration: boardBoxDecoration,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.end,
