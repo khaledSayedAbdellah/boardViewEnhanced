@@ -7,7 +7,6 @@ typedef OnTapList = void Function(int? listIndex);
 typedef OnStartDragList = void Function(int? listIndex);
 
 class BoardList extends StatefulWidget {
-  final BoxDecoration? boardBoxDecoration;
   final EdgeInsets? margin;
   final List<Widget>? header;
   final Widget? footer;
@@ -24,7 +23,6 @@ class BoardList extends StatefulWidget {
 
   const BoardList({
     Key? key,
-    this.boardBoxDecoration,
     this.margin,
     this.header,
     this.items,
