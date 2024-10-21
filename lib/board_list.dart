@@ -13,6 +13,7 @@ class BoardList extends StatefulWidget {
   final Widget? footer;
   final List<BoardItem>? items;
   final Color? backgroundColor;
+  final Color? borderColor;
   final Color? headerBackgroundColor;
   final BoardViewState? boardView;
   final OnDropList? onDropList;
@@ -29,6 +30,7 @@ class BoardList extends StatefulWidget {
     this.items,
     this.footer,
     this.backgroundColor,
+    this.borderColor,
     this.headerBackgroundColor,
     this.boardView,
     this.draggable = true,
@@ -182,14 +184,13 @@ class BoardListState extends State<BoardList> with AutomaticKeepAliveClientMixin
     }
 
     Color? backgroundColor = Theme.of(context).colorScheme.onInverseSurface;
-    BoxDecoration? boardBoxDecoration;
+    Color? borderColor;
 
     if (widget.backgroundColor != null) {
       backgroundColor = widget.backgroundColor;
     }
-
-    if(widget.boardBoxDecoration != null) {
-      boardBoxDecoration = widget.boardBoxDecoration;
+    if (widget.borderColor != null) {
+      borderColor = widget.borderColor;
     }
     if (widget.boardView!.listStates.length > widget.index!) {
       widget.boardView!.listStates.removeAt(widget.index!);
@@ -197,8 +198,12 @@ class BoardListState extends State<BoardList> with AutomaticKeepAliveClientMixin
     widget.boardView!.listStates.insert(widget.index!, this);
 
     return Container(
-        margin: widget.margin,
-        decoration: boardBoxDecoration,
+        margin: widget.margin ?? const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          color: backgroundColor,
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
+          border: borderColor != null ? Border.all(color: borderColor) : null,
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.end,
