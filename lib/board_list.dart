@@ -37,7 +37,7 @@ class BoardList extends StatefulWidget {
     this.listBuilder,
   }) : super(key: key);
 
-  BoardList copyWith({BoardViewState? boardView,int? index}){
+  BoardList copyWith({BoardViewState? boardView}){
     return BoardList(
       boardView: boardView,
       index: index,

@@ -382,7 +382,7 @@ class BoardViewState extends State<BoardView>
       controller: boardViewController,
       itemBuilder: (BuildContext context, int index) {
         if (widget.lists![index].boardView == null) {
-          widget.lists![index] = widget.lists![index].copyWith(boardView: this,index: null);
+          widget.lists![index] = widget.lists![index].copyWith(boardView: this);
         }
         if (widget.lists![index].index != index) {
           widget.lists![index] = widget.lists![index].copyWith(boardView: this);
