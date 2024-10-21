@@ -382,37 +382,10 @@ class BoardViewState extends State<BoardView>
       controller: boardViewController,
       itemBuilder: (BuildContext context, int index) {
         if (widget.lists![index].boardView == null) {
-          widget.lists![index] = BoardList(
-            items: widget.lists![index].items,
-            headerBackgroundColor: widget.lists![index].headerBackgroundColor,
-            backgroundColor: widget.lists![index].backgroundColor,
-            borderColor: widget.lists![index].borderColor,
-            footer: widget.lists![index].footer,
-            header: widget.lists![index].header,
-            boardView: this,
-            draggable: widget.lists![index].draggable,
-            onDropList: widget.lists![index].onDropList,
-            onTapList: widget.lists![index].onTapList,
-            onStartDragList: widget.lists![index].onStartDragList,
-            listBuilder: widget.lists![index].listBuilder,
-          );
+          widget.lists![index] = widget.lists![index].copyWith(boardView: this,index: null);
         }
         if (widget.lists![index].index != index) {
-          widget.lists![index] = BoardList(
-            items: widget.lists![index].items,
-            headerBackgroundColor: widget.lists![index].headerBackgroundColor,
-            backgroundColor: widget.lists![index].backgroundColor,
-            borderColor: widget.lists![index].borderColor,
-            footer: widget.lists![index].footer,
-            header: widget.lists![index].header,
-            boardView: this,
-            draggable: widget.lists![index].draggable,
-            index: index,
-            onDropList: widget.lists![index].onDropList,
-            onTapList: widget.lists![index].onTapList,
-            onStartDragList: widget.lists![index].onStartDragList,
-            listBuilder: widget.lists![index].listBuilder,
-          );
+          widget.lists![index] = widget.lists![index].copyWith(boardView: this);
         }
 
         var temp = Container(

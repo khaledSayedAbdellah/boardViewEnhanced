@@ -7,12 +7,11 @@ typedef OnTapList = void Function(int? listIndex);
 typedef OnStartDragList = void Function(int? listIndex);
 
 class BoardList extends StatefulWidget {
+  final BoxDecoration? boxDecoration;
   final EdgeInsets? margin;
   final List<Widget>? header;
   final Widget? footer;
   final List<BoardItem>? items;
-  final Color? backgroundColor;
-  final Color? borderColor;
   final Color? headerBackgroundColor;
   final BoardViewState? boardView;
   final OnDropList? onDropList;
@@ -27,8 +26,7 @@ class BoardList extends StatefulWidget {
     this.header,
     this.items,
     this.footer,
-    this.backgroundColor,
-    this.borderColor,
+    this.boxDecoration,
     this.headerBackgroundColor,
     this.boardView,
     this.draggable = true,
@@ -38,6 +36,24 @@ class BoardList extends StatefulWidget {
     this.onStartDragList,
     this.listBuilder,
   }) : super(key: key);
+
+  BoardList copyWith({BoardViewState? boardView,int? index}){
+    return BoardList(
+      boardView: boardView,
+      index: index,
+      margin: margin,
+      header: header,
+      items: items,
+      footer: footer,
+      boxDecoration: boxDecoration,
+      headerBackgroundColor: headerBackgroundColor,
+      draggable: draggable,
+      onDropList: onDropList,
+      onTapList: onTapList,
+      onStartDragList: onStartDragList,
+      listBuilder: listBuilder,
+    );
+  }
 
   final int? index;
 
@@ -181,27 +197,14 @@ class BoardListState extends State<BoardList> with AutomaticKeepAliveClientMixin
       listWidgets.add(widget.footer!);
     }
 
-    Color? backgroundColor = Theme.of(context).colorScheme.onInverseSurface;
-    Color? borderColor;
-
-    if (widget.backgroundColor != null) {
-      backgroundColor = widget.backgroundColor;
-    }
-    if (widget.borderColor != null) {
-      borderColor = widget.borderColor;
-    }
     if (widget.boardView!.listStates.length > widget.index!) {
       widget.boardView!.listStates.removeAt(widget.index!);
     }
     widget.boardView!.listStates.insert(widget.index!, this);
 
     return Container(
-        margin: widget.margin ?? const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          color: backgroundColor,
-          borderRadius: const BorderRadius.all(Radius.circular(8)),
-          border: borderColor != null ? Border.all(color: borderColor) : null,
-        ),
+        margin: widget.margin,
+        decoration: widget.boxDecoration,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.end,
