@@ -386,6 +386,7 @@ class BoardViewState extends State<BoardView>
             items: widget.lists![index].items,
             headerBackgroundColor: widget.lists![index].headerBackgroundColor,
             backgroundColor: widget.lists![index].backgroundColor,
+            borderColor: widget.lists![index].backgroundColor,
             footer: widget.lists![index].footer,
             header: widget.lists![index].header,
             boardView: this,
