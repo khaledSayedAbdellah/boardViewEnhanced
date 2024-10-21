@@ -192,11 +192,8 @@ class BoardListState extends State<BoardList> with AutomaticKeepAliveClientMixin
     widget.boardView!.listStates.insert(widget.index!, this);
 
     return Container(
-        margin: widget.margin ?? const EdgeInsets.all(8),
-        decoration: widget.boardBoxDecoration ?? BoxDecoration(
-          color: backgroundColor,
-          borderRadius: const BorderRadius.all(Radius.circular(8)),
-        ),
+        margin: widget.margin,
+        decoration: widget.boardBoxDecoration,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.end,
