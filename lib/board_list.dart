@@ -192,6 +192,7 @@ class BoardListState extends State<BoardList> with AutomaticKeepAliveClientMixin
         decoration: BoxDecoration(
           color: backgroundColor,
           borderRadius: const BorderRadius.all(Radius.circular(8)),
+          border: Border.all()
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
