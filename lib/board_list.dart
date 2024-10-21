@@ -7,6 +7,7 @@ typedef OnTapList = void Function(int? listIndex);
 typedef OnStartDragList = void Function(int? listIndex);
 
 class BoardList extends StatefulWidget {
+  final BoxDecoration? boardBoxDecoration;
   final List<Widget>? header;
   final Widget? footer;
   final List<BoardItem>? items;
@@ -21,6 +22,7 @@ class BoardList extends StatefulWidget {
 
   const BoardList({
     Key? key,
+    this.boardBoxDecoration,
     this.header,
     this.items,
     this.footer,
@@ -189,7 +191,7 @@ class BoardListState extends State<BoardList> with AutomaticKeepAliveClientMixin
 
     return Container(
         margin: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
+        decoration: widget.boardBoxDecoration ?? BoxDecoration(
           color: backgroundColor,
           borderRadius: const BorderRadius.all(Radius.circular(8)),
           border: Border.all()
